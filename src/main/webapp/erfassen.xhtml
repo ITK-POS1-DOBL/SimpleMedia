@@ -4,19 +4,38 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
+    <head/>
+ 
     <body>
 
         <ui:composition template="./templates/template.xhtml">
 
             <ui:define name="content">
                 <h:form>
-                    <h:panelGrid columns="1" >
-                        <h:inputText value="#{erfassenBean.type}" />
-                        <h:inputText value="#{erfassenBean.title}" />
-                        <h:inputTextarea value="#{erfassenBean.description}" />
+                    <h:panelGrid columns="2" >
+                        <h:outputLabel id="lbl_type" for="input_type" 
+                                       value="Type" />
+                        <h:inputText id="input_type" 
+                                     label="Type" 
+                                     value="#{erfassenBean.type}"
+                                     required="true" />
+                        <h:outputLabel id="lbl_title" for="input_title" 
+                                       value="Title"/>
+                        <h:inputText id="input_title" 
+                                     label="Title"
+                                     value="#{erfassenBean.title}" />
+                        <h:outputLabel id="lbl_desc" for="input_desc" 
+                                       value="Description"/>
+                        <h:inputTextarea id="input_desc"
+                                         label="Description"
+                                         value="#{erfassenBean.description}" />
                     </h:panelGrid>
-                    <h:commandButton value="Submit" action="#{erfassenBean.saveMedium}" />
-                    <h:commandButton value="Reset" action="#{erfassenBean.resetUserInputs}"/>
+                    
+                    <h:commandButton id="btn_submit" 
+                                     value="Submit" 
+                                     action="#{erfassenBean.saveMedium}" />
+                    <h:commandButton id="btn_reset" value="Reset" 
+                                     action="#{erfassenBean.resetUserInputs}"/>
                 </h:form>
             </ui:define>
 

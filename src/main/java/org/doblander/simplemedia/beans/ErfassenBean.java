@@ -10,7 +10,6 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import org.doblander.simplemedia.domain.MediaLibrary;
 
-
 /**
  *
  * @author intruder
@@ -22,10 +21,10 @@ public class ErfassenBean {
     private String type;
     private String title;
     private String description;
-    
+
     @Inject
     private MediaLibrary theLib;
-    
+
     /**
      * Creates a new instance of ErfassenBean
      */
@@ -35,15 +34,15 @@ public class ErfassenBean {
     public void saveMedium() {
         theLib.insertMedium(type, title, description);
         resetUserInputs();
-        
+
     }
-    
+
     public void resetUserInputs() {
         setType("");
         setTitle("");
         setDescription("");
     }
-    
+
     public String getType() {
         return type;
     }
@@ -67,6 +66,5 @@ public class ErfassenBean {
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
+
 }

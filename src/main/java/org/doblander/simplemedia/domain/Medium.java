@@ -10,13 +10,14 @@ package org.doblander.simplemedia.domain;
  * @author intruder
  */
 public class Medium {
+
     private long Id;
     private String type;
     private String title;
     private String description;
-    
+
     private static long idCounter = 0;
-    
+
     public Medium() {
     }
 
@@ -30,6 +31,5 @@ public class Medium {
     private long getNextId() {
         return idCounter++;
     }
-    
-    
+
 }
