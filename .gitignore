@@ -7,3 +7,5 @@ target/SimpleMedia-1.0-SNAPSHOT/WEB-INF/classes/org/doblander/simplemedia/domain
 target/SimpleMedia-1.0-SNAPSHOT.war
 target/maven-archiver/pom.properties
 target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+target/SimpleMedia-1.0-SNAPSHOT/gfv3ee6.dpf
+target/SimpleMedia-1.0-SNAPSHOT/suchen.xhtml

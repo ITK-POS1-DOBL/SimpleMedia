@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <body>
+
+        <ui:composition template="./templates/template.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="2" >
+                        <h:outputLabel id="lbl_medium-id" for="input_medium-id" 
+                                       value="Medium ID" />
+                        <h:inputText id="input_medium-id" 
+                                     label="Medium ID" 
+                                     value="#{suchenBean.mediumId}"
+                                     required="false" />
+                    </h:panelGrid>
+                    
+                    <h:commandButton id="btn_submit" 
+                                     value="Submit" 
+                                     action="#{suchenBean.findMedium}" />
+                    <h:commandButton id="btn_reset" value="Reset" 
+                                     action="#{suchenBean.resetUserInputs}"/>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
