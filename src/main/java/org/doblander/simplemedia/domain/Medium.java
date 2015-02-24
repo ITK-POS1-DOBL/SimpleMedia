@@ -32,4 +32,9 @@ public class Medium {
         return idCounter++;
     }
 
+    public long getId() {
+        return Id;
+    }
+
+    
 }
