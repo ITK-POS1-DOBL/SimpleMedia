@@ -25,6 +25,7 @@ public class MediaLibrary {
     
     public void insertMedium(String type, String title, String description) {
         mediaList.add(new Medium(type, title, description));
-        logger.log(Level.INFO, "added medium");
+        // Log-Output for debugging...
+        logger.log(Level.INFO, "added medium: " + type + ", " + title + ", " + description);
     }
 }
