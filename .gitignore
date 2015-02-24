@@ -4,3 +4,6 @@ target/SimpleMedia-1.0-SNAPSHOT/index.xhtml
 target/SimpleMedia-1.0-SNAPSHOT/templates/template.xhtml
 target/SimpleMedia-1.0-SNAPSHOT/WEB-INF/classes/org/doblander/simplemedia/domain/MediaLibrary.class
 target/SimpleMedia-1.0-SNAPSHOT/WEB-INF/classes/org/doblander/simplemedia/domain/Medium.class
+target/SimpleMedia-1.0-SNAPSHOT.war
+target/maven-archiver/pom.properties
+target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
