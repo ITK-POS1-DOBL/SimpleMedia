@@ -5,12 +5,14 @@
  */
 package org.doblander.simplemedia.domain;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Value Objects for communication of Business Domain to UI
  * @author intruder
  */
 public class MediumVO {
-
+    
     private String mediumIdString;
     private String mediumTypeString;
     private String mediumTitleString;
