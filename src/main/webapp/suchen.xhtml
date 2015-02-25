@@ -15,7 +15,7 @@
                                        value="Medium ID" />
                         <h:inputText id="input_medium-id" 
                                      label="Medium ID" 
-                                     value="#{suchenBean.mediumId}"
+                                     value="#{suchenBean.mediumIdString}"
                                      required="false" />
                     </h:panelGrid>
                     
@@ -25,6 +25,12 @@
                     <h:commandButton id="btn_reset" value="Reset" 
                                      action="#{suchenBean.resetUserInputs}"/>
                 </h:form>
+                <h:outputText rendered="#{suchenBean.showResult}" 
+                              value="#{suchenBean.mediumIdString}
+                                     #{suchenBean.mediumTypeString}
+                                     #{suchenBean.mediumTitleString}
+                                     #{suchenBean.mediumDescString}" />
+                
             </ui:define>
 
         </ui:composition>

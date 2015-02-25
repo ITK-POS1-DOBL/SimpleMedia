@@ -37,4 +37,25 @@ public class MediaLibrary {
         logger.log(Level.INFO, "added medium: " + type + ", " + title
                 + ", " + description);
     }
+    
+    /**
+     * Searches the media store for the medium with the given ID
+     * @param Id the value of Id
+     * @return the org.doblander.simplemedia.domain.MediumVO
+     */
+    public MediumVO findMediumById(long Id) {
+        Medium currentMedium = null;
+        // use array list
+        while (mediaList.iterator().hasNext()) {
+            currentMedium = mediaList.iterator().next();
+            if (Id == currentMedium.getId()) {
+                return currentMedium.createVO();
+            }
+            else {
+                //currentMedium = null;
+            }
+        }
+        
+        return currentMedium.createVO();
+    }
 }
