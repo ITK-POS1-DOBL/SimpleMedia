@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core" >
+      xmlns:f="http://java.sun.com/jsf/core">
 
     <body>
 
@@ -11,56 +11,47 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h:panelGrid columns="2" >
-                        <h:outputLabel id="lbl_medium-id" for="input_medium-id" 
-                                       value="Medium ID" />
-                        <h:inputText id="input_medium-id" 
-                                     label="Medium ID" 
-                                     value="#{suchenBean.mediumIdString}"
-                                     required="false" />
-
-                    </h:panelGrid>
-
                     <h:panelGrid columns="2">
                         <h:commandButton id="btn_submit" 
                                          value="Submit" 
-                                         action="#{suchenBean.findMedium}" />
+                                         action="#{inventarBean.retrieveInventory}" />
                         <h:commandButton id="btn_reset" value="Reset" 
-                                         action="#{suchenBean.resetUserInputs}"/>
+                                         action="#{inventarBean.resetResults}"/>
                     </h:panelGrid>
                     
                     <h:panelGrid columns="1">
-                                 <h:outputText value="Suchergebnis" 
-                                  rendered="#{suchenBean.showResult}" />
+                        <h:outputText value="Inventarliste" 
+                                      rendered="#{inventarBean.showResult}" />
 
                         <h:dataTable id="dataTable" 
                                      border="1"
-                                     rendered="#{suchenBean.showResult}"
-                                     value="#{suchenBean.dataTableEntries}" >
+                                     rendered="#{inventarBean.showResult}"
+                                     value="#{inventarBean.dataTableEntries}"
+                                     var="__medium" >
 
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium ID"/>
                                 </f:facet>
-                                <h:outputText value="#{suchenBean.mediumIdString}"/>
+                                <h:outputText value="#{inventarBean.mediumIdString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Type"/>
                                 </f:facet>
-                                <h:outputText value="#{suchenBean.mediumTypeString}"/>
+                                <h:outputText value="#{inventarBean.mediumTypeString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Title"/>
                                 </f:facet>
-                                <h:outputText value="#{suchenBean.mediumTitleString}"/>
+                                <h:outputText value="#{inventarBean.mediumTitleString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Description"/>
                                 </f:facet>
-                                <h:outputText value="#{suchenBean.mediumDescString}"/>
+                                <h:outputText value="#{inventarBean.mediumDescString}"/>
                             </h:column>
 
                         </h:dataTable>

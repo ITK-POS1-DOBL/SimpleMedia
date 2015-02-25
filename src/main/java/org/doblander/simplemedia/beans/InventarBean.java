@@ -14,12 +14,12 @@ import org.doblander.simplemedia.domain.MediaLibrary;
 import org.doblander.simplemedia.domain.MediumVO;
 
 /**
- * Backing Bean for "suchen.xhtml"
+ *
  * @author intruder
  */
-@Named(value = "suchenBean")
+@Named(value = "inventarBean")
 @RequestScoped
-public class SuchenBean {
+public class InventarBean {
 
     private String mediumIdString;
     private String mediumTypeString;
@@ -28,40 +28,29 @@ public class SuchenBean {
     private boolean showResult = false;
     private List<MediumVO> dataTableEntries;
     private MediumVO dataTableEntry;
-    
+
     @Inject
     private MediaLibrary medLib;
 
-    /** 
+    /**
      * Default constructor
+     *
      * @author Intruder
      */
-    public SuchenBean() {
-         this.dataTableEntries = new ArrayList<MediumVO>();
+    public InventarBean() {
+        this.dataTableEntries = new ArrayList<MediumVO>();
     }
 
-    
-    public void findMedium() {
-        MediumVO mediumVals = medLib.findMediumById(convertIdStringToLong(mediumIdString));
-        if ((mediumVals != null) && (mediumVals.getMediumIdString().equalsIgnoreCase(mediumIdString))) {
-            this.setMediumTypeString(mediumVals.getMediumTypeString());
-            this.setMediumTitleString(mediumVals.getMediumTitleString());
-            this.setMediumDescString(mediumVals.getMediumDescString());
-            this.dataTableEntries.add(mediumVals);
-            this.showResult = true;
-        }
-        else {
-            
-            resetUserInputs();
-        }
+    public void retrieveInventory() {
+        this.setDataTableEntries(medLib.getFullInventory());
+        this.setShowResult(true);
     }
     
-    public void resetUserInputs() {
-        setMediumIdString("0");
+    public void resetResults() {
         setShowResult(false);
         dataTableEntries.clear();
     }
-    
+
     public String getMediumIdString() {
         return mediumIdString;
     }
@@ -118,12 +107,4 @@ public class SuchenBean {
         this.dataTableEntry = dataTableEntry;
     }
 
-    
-    
-    private long convertIdStringToLong(String mediumIdString) {
-        return Long.parseLong(mediumIdString);
-    }
-    
-    
-    
 }
