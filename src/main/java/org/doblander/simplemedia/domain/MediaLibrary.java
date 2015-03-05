@@ -25,7 +25,7 @@ public class MediaLibrary {
     private static final Logger logger
             = Logger.getLogger("org.doblander.simplemedia.domain.MediaLibrary");
     
-    private MediaRepository mediaRepo;
+    private MediaRepository mediaRepo = new MediaRepository();
 
     public void insertMedium(String type, String title, String description) {
         Medium tempMedium = new Medium(type, title, description);
@@ -45,13 +45,28 @@ public class MediaLibrary {
      */
     public MediumDTO findMediumById(long Id) {
         
-        return mediaRepo.getMediumById(Id);
+        return mediaRepo.getMediumById(Id).createDTO();
         
     }
 
     public List<MediumDTO> getFullInventory() {
         
-        return mediaRepo.getCompleteMediaList();
+        List<MediumDTO> dtoList = convertMediumListToDTOList(mediaRepo.getCompleteMediaList());
+        return dtoList;
         
+    }
+
+    private List<MediumDTO> convertMediumListToDTOList(List<Medium> completeMediaList) {
+        
+        List<MediumDTO> dtoList = new ArrayList<>();
+        Medium tempMedium;
+        
+        Iterator iterator = completeMediaList.iterator();
+        while(iterator.hasNext()) {
+            tempMedium = (Medium)iterator.next();
+            dtoList.add(tempMedium.createDTO());
+        }
+        
+        return dtoList;
     }
 }

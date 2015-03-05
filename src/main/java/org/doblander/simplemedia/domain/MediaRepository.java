@@ -6,8 +6,8 @@
 package org.doblander.simplemedia.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  *
@@ -15,22 +15,21 @@ import java.util.Iterator;
  */
 public class MediaRepository {
  
-    private static ArrayList<Medium> mediaList = new ArrayList();
-
-    private static HashMap mediaStore = new HashMap();
+    private static List<Medium> mediaList = new ArrayList<>();
 
     public void add(Medium medium) {
         mediaList.add(medium);
     }
 
-    MediumDTO getMediumById(long Id) {
+    Medium getMediumById(long Id) {
+        
         Medium currentMedium = null;
-        // use array list
+        
         Iterator iterator = mediaList.iterator();
         while (iterator.hasNext()) {
             currentMedium = (Medium)iterator.next();
             if (Id == currentMedium.getId()) {
-                return currentMedium.createVO();
+                return currentMedium;
             } else {
                 currentMedium = null;
             }
@@ -39,15 +38,13 @@ public class MediaRepository {
         return null;
     }
 
-    ArrayList<MediumDTO> getCompleteMediaList() {
-        ArrayList<MediumDTO> inventory = new ArrayList<MediumDTO>();
+    List<Medium> getCompleteMediaList() {
 
-        int cnt = 1;
+        List<Medium> inventory = new ArrayList<>();
+
         Iterator iterator = mediaList.iterator();
-        //while (mediaList.iterator().hasNext()) {
-        //MediumVO mediumval = ((Medium)iterator.next()).createVO();
         while (iterator.hasNext()) {
-            inventory.add(((Medium)iterator.next()).createVO());
+            inventory.add(((Medium)iterator.next()));
             
         }
 
