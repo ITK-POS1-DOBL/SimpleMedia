@@ -44,9 +44,9 @@ public class MediaLibrary {
      * Searches the media store for the medium with the given ID
      *
      * @param Id the value of Id
-     * @return the org.doblander.simplemedia.domain.MediumVO
+     * @return the org.doblander.simplemedia.domain.MediumDTO
      */
-    public MediumVO findMediumById(long Id) {
+    public MediumDTO findMediumById(long Id) {
         Medium currentMedium = null;
         // use array list
         Iterator iterator = mediaList.iterator();
@@ -62,8 +62,8 @@ public class MediaLibrary {
         return null;
     }
 
-    public List<MediumVO> getFullInventory() {
-        ArrayList<MediumVO> inventory = new ArrayList<MediumVO>();
+    public List<MediumDTO> getFullInventory() {
+        ArrayList<MediumDTO> inventory = new ArrayList<MediumDTO>();
 
         logger.log(Level.INFO, "hasNext at entry: " + Boolean.toString(mediaList.iterator().hasNext()));
         int cnt = 1;
