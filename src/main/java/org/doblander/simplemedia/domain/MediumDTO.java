@@ -11,14 +11,14 @@ import javax.validation.constraints.NotNull;
  * Value Objects for communication of Business Domain to UI
  * @author intruder
  */
-public class MediumVO {
+public class MediumDTO {
     
     private String mediumIdString;
     private String mediumTypeString;
     private String mediumTitleString;
     private String mediumDescString;
 
-    MediumVO(long Id, String type, String title, String description) {
+    MediumDTO(long Id, String type, String title, String description) {
         this.mediumIdString = Long.toString(Id);
         this.mediumTypeString = type;
         this.mediumTitleString = title;

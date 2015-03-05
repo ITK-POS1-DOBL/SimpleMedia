@@ -60,8 +60,8 @@ public class Medium {
         this.description = description;
     }
 
-    MediumVO createVO() {
-        return new MediumVO(this.Id, this.type, this.title, this.description);
+    MediumDTO createDTO() {
+        return new MediumDTO(this.Id, this.type, this.title, this.description);
     }
 
     

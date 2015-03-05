@@ -11,7 +11,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import org.doblander.simplemedia.domain.MediaLibrary;
-import org.doblander.simplemedia.domain.MediumVO;
+import org.doblander.simplemedia.domain.MediumDTO;
 
 /**
  * Backing Bean for "suchen.xhtml"
@@ -26,8 +26,8 @@ public class SuchenBean {
     private String mediumTitleString;
     private String mediumDescString;
     private boolean showResult = false;
-    private List<MediumVO> dataTableEntries;
-    private MediumVO dataTableEntry;
+    private List<MediumDTO> dataTableEntries;
+    private MediumDTO dataTableEntry;
     
     @Inject
     private MediaLibrary medLib;
@@ -37,12 +37,12 @@ public class SuchenBean {
      * @author Intruder
      */
     public SuchenBean() {
-         this.dataTableEntries = new ArrayList<MediumVO>();
+         this.dataTableEntries = new ArrayList<MediumDTO>();
     }
 
     
     public void findMedium() {
-        MediumVO mediumVals = medLib.findMediumById(convertIdStringToLong(mediumIdString));
+        MediumDTO mediumVals = medLib.findMediumById(convertIdStringToLong(mediumIdString));
         if ((mediumVals != null) && (mediumVals.getMediumIdString().equalsIgnoreCase(mediumIdString))) {
             this.setMediumTypeString(mediumVals.getMediumTypeString());
             this.setMediumTitleString(mediumVals.getMediumTitleString());
@@ -102,19 +102,19 @@ public class SuchenBean {
         this.showResult = showResult;
     }
 
-    public List<MediumVO> getDataTableEntries() {
+    public List<MediumDTO> getDataTableEntries() {
         return dataTableEntries;
     }
 
-    public void setDataTableEntries(List<MediumVO> dataTableEntries) {
+    public void setDataTableEntries(List<MediumDTO> dataTableEntries) {
         this.dataTableEntries = dataTableEntries;
     }
 
-    public MediumVO getDataTableEntry() {
+    public MediumDTO getDataTableEntry() {
         return dataTableEntry;
     }
 
-    public void setDataTableEntry(MediumVO dataTableEntry) {
+    public void setDataTableEntry(MediumDTO dataTableEntry) {
         this.dataTableEntry = dataTableEntry;
     }
 
