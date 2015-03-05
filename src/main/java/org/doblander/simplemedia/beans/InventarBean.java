@@ -26,8 +26,10 @@ public class InventarBean {
     private String mediumTitleString;
     private String mediumDescString;
     private boolean showResult = false;
-    private List<MediumDTO> dataTableEntries;
-    private MediumDTO dataTableEntry;
+    private List<MediumDTO> mediaList;
+
+    private String[] dataTableEntries;
+    private String dataTableEntry;
 
     @Inject
     private MediaLibrary medLib;
@@ -38,17 +40,19 @@ public class InventarBean {
      * @author Intruder
      */
     public InventarBean() {
-        this.dataTableEntries = new ArrayList<MediumDTO>();
+        this.mediaList = new ArrayList<>();
     }
 
     public void retrieveInventory() {
-        this.setDataTableEntries(medLib.getFullInventory());
+        this.setMediaList(medLib.getFullInventory());
+        this.dataTableEntries = new String[mediaList.size()];
+        this.dataTableEntries = mediaList.toArray(new String[1]);
         this.setShowResult(true);
     }
     
     public void resetResults() {
         setShowResult(false);
-        dataTableEntries.clear();
+        dataTableEntries = null;
     }
 
     public String getMediumIdString() {
@@ -91,20 +95,27 @@ public class InventarBean {
         this.showResult = showResult;
     }
 
-    public List<MediumDTO> getDataTableEntries() {
+    public String[] getDataTableEntries() {
         return dataTableEntries;
     }
 
-    public void setDataTableEntries(List<MediumDTO> dataTableEntries) {
+    public void setDataTableEntries(String[] dataTableEntries) {
         this.dataTableEntries = dataTableEntries;
     }
 
-    public MediumDTO getDataTableEntry() {
+    public String getDataTableEntry() {
         return dataTableEntry;
     }
 
-    public void setDataTableEntry(MediumDTO dataTableEntry) {
+    public void setDataTableEntry(String dataTableEntry) {
         this.dataTableEntry = dataTableEntry;
     }
 
+    public List<MediumDTO> getMediaList() {
+        return mediaList;
+    }
+
+    public void setMediaList(List<MediumDTO> mediaList) {
+        this.mediaList = mediaList;
+    }
 }
