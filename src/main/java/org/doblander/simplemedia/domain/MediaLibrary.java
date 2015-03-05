@@ -9,10 +9,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.logging.Level;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
-import java.util.logging.Logger;
+import org.doblander.simplemedia.util.SimpleMediaLogger;
 
 /**
  *
@@ -26,8 +25,6 @@ public class MediaLibrary {
 
     private static HashMap mediaStore = new HashMap();
 
-    private static final Logger logger
-            = Logger.getLogger("org.doblander.simplemedia.domain.MediaLibrary");
 
     public void insertMedium(String type, String title, String description) {
         Medium tempMedium = new Medium(type, title, description);
@@ -36,7 +33,7 @@ public class MediaLibrary {
         mediaStore.put(tempMedium.getId(), tempMedium);
 
         // Log-Output for debugging...
-        logger.log(Level.INFO, "added medium: " + type + ", " + title
+        SimpleMediaLogger.logInfo("added medium: " + type + ", " + title
                 + ", " + description);
     }
 
@@ -65,14 +62,14 @@ public class MediaLibrary {
     public List<MediumVO> getFullInventory() {
         ArrayList<MediumVO> inventory = new ArrayList<MediumVO>();
 
-        logger.log(Level.INFO, "hasNext at entry: " + Boolean.toString(mediaList.iterator().hasNext()));
+        SimpleMediaLogger.logInfo("hasNext at entry: " + Boolean.toString(mediaList.iterator().hasNext()));
         int cnt = 1;
         Iterator iterator = mediaList.iterator();
         //while (mediaList.iterator().hasNext()) {
         //MediumVO mediumval = ((Medium)iterator.next()).createVO();
         while (iterator.hasNext()) {
             inventory.add(((Medium)iterator.next()).createVO());
-            logger.log(Level.INFO, "in loop / current cnt: " + cnt);
+            SimpleMediaLogger.logInfo("in loop / current cnt: " + cnt);
         }
 
         return inventory;
