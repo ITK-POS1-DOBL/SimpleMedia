@@ -6,7 +6,6 @@
 package org.doblander.simplemedia.domain;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,18 +21,16 @@ import java.util.logging.Logger;
 @ApplicationScoped
 public class MediaLibrary {
 
-    private static ArrayList<Medium> mediaList = new ArrayList();
-
-    private static HashMap mediaStore = new HashMap();
-
+    
     private static final Logger logger
             = Logger.getLogger("org.doblander.simplemedia.domain.MediaLibrary");
+    
+    private MediaRepository mediaRepo;
 
     public void insertMedium(String type, String title, String description) {
         Medium tempMedium = new Medium(type, title, description);
 
-        mediaList.add(tempMedium);
-        mediaStore.put(tempMedium.getId(), tempMedium);
+        mediaRepo.add(tempMedium);
 
         // Log-Output for debugging...
         logger.log(Level.INFO, "added medium: " + type + ", " + title
@@ -47,34 +44,14 @@ public class MediaLibrary {
      * @return the org.doblander.simplemedia.domain.MediumDTO
      */
     public MediumDTO findMediumById(long Id) {
-        Medium currentMedium = null;
-        // use array list
-        Iterator iterator = mediaList.iterator();
-        while (iterator.hasNext()) {
-            currentMedium = (Medium)iterator.next();
-            if (Id == currentMedium.getId()) {
-                return currentMedium.createVO();
-            } else {
-                currentMedium = null;
-            }
-        }
-
-        return null;
+        
+        return mediaRepo.getMediumById(Id);
+        
     }
 
     public List<MediumDTO> getFullInventory() {
-        ArrayList<MediumDTO> inventory = new ArrayList<MediumDTO>();
-
-        logger.log(Level.INFO, "hasNext at entry: " + Boolean.toString(mediaList.iterator().hasNext()));
-        int cnt = 1;
-        Iterator iterator = mediaList.iterator();
-        //while (mediaList.iterator().hasNext()) {
-        //MediumVO mediumval = ((Medium)iterator.next()).createVO();
-        while (iterator.hasNext()) {
-            inventory.add(((Medium)iterator.next()).createVO());
-            logger.log(Level.INFO, "in loop / current cnt: " + cnt);
-        }
-
-        return inventory;
+        
+        return mediaRepo.getCompleteMediaList();
+        
     }
 }
