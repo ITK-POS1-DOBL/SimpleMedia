@@ -25,14 +25,15 @@ public class InventarBean {
     private String mediumTypeString;
     private String mediumTitleString;
     private String mediumDescString;
+    
     private boolean showResult = false;
+    
     private List<MediumDTO> mediaList;
 
-    private String[] dataTableEntries;
-    private String dataTableEntry;
+    private MediumDTO[] dataTableEntries;
 
     @Inject
-    private MediaLibrary medLib;
+    private MediaLibrary mediaLib;
 
     /**
      * Default constructor
@@ -44,9 +45,9 @@ public class InventarBean {
     }
 
     public void retrieveInventory() {
-        this.setMediaList(medLib.getFullInventory());
-        this.dataTableEntries = new String[mediaList.size()];
-        this.dataTableEntries = mediaList.toArray(new String[1]);
+        this.setMediaList(mediaLib.getFullInventory());
+        this.dataTableEntries = new MediumDTO[mediaList.size()];
+        this.dataTableEntries = mediaList.toArray(new MediumDTO[1]);
         this.setShowResult(true);
     }
     
@@ -95,20 +96,12 @@ public class InventarBean {
         this.showResult = showResult;
     }
 
-    public String[] getDataTableEntries() {
+    public MediumDTO[] getDataTableEntries() {
         return dataTableEntries;
     }
 
-    public void setDataTableEntries(String[] dataTableEntries) {
+    public void setDataTableEntries(MediumDTO[] dataTableEntries) {
         this.dataTableEntries = dataTableEntries;
-    }
-
-    public String getDataTableEntry() {
-        return dataTableEntry;
-    }
-
-    public void setDataTableEntry(String dataTableEntry) {
-        this.dataTableEntry = dataTableEntry;
     }
 
     public List<MediumDTO> getMediaList() {

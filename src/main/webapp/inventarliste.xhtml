@@ -27,31 +27,31 @@
                                      border="1"
                                      rendered="#{inventarBean.showResult}"
                                      value="#{inventarBean.dataTableEntries}"
-                                     var="__medium" >
+                                     var="__tableItem" >
 
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium ID"/>
                                 </f:facet>
-                                <h:outputText value="#{inventarBean.mediumIdString}"/>
+                                <h:outputText value="#{__tableItem.mediumIdString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Type"/>
                                 </f:facet>
-                                <h:outputText value="#{inventarBean.mediumTypeString}"/>
+                                <h:outputText value="#{__tableItem.mediumTypeString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Title"/>
                                 </f:facet>
-                                <h:outputText value="#{inventarBean.mediumTitleString}"/>
+                                <h:outputText value="#{__tableItem.mediumTitleString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Description"/>
                                 </f:facet>
-                                <h:outputText value="#{inventarBean.mediumDescString}"/>
+                                <h:outputText value="#{__tableItem.mediumDescString}"/>
                             </h:column>
 
                         </h:dataTable>
