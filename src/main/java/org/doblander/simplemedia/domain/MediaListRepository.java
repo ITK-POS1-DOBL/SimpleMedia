@@ -13,15 +13,17 @@ import java.util.List;
  *
  * @author intruder
  */
-public class MediaRepository {
+public class MediaListRepository implements IMediaRepository {
  
     private static List<Medium> mediaList = new ArrayList<>();
 
+    @Override
     public void add(Medium medium) {
         mediaList.add(medium);
     }
 
-    Medium getMediumById(long Id) {
+    @Override
+    public Medium getMediumById(long Id) {
         
         Medium currentMedium = null;
         
@@ -38,7 +40,8 @@ public class MediaRepository {
         return null;
     }
 
-    List<Medium> getCompleteMediaList() {
+    @Override
+    public List<Medium> getCompleteMediaList() {
 
         List<Medium> inventory = new ArrayList<>();
 
