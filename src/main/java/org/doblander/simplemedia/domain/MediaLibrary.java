@@ -44,14 +44,13 @@ public class MediaLibrary {
         
     }
 
-    public List<MediumDTO> getFullInventory() {
+    public List<Medium> getFullInventory() {
         
-        List<MediumDTO> dtoList = convertMediumListToDTOList(mediaRepo.getCompleteMediaList());
-        return dtoList;
+        return mediaRepo.getCompleteMediaList();
         
     }
 
-    private List<MediumDTO> convertMediumListToDTOList(List<Medium> completeMediaList) {
+    public List<MediumDTO> convertMediumListToDTOList(List<Medium> completeMediaList) {
         
         List<MediumDTO> dtoList = new ArrayList<>();
         Medium tempMedium;

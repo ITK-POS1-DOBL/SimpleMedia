@@ -38,7 +38,8 @@ public class InventarBean {
     }
 
     public void retrieveInventory() {
-        this.setMediaList(mediaLib.getFullInventory());
+        this.setMediaList(mediaLib.convertMediumListToDTOList(
+                        mediaLib.getFullInventory()));
         this.setShowResult(true);
     }
     

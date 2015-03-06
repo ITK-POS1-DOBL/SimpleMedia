@@ -8,15 +8,19 @@ package org.doblander.simplemedia.domain;
 import java.util.List;
 
 /**
+ * Interface type for media repositories
+ *
+ * used to abstract from a concrete repository implementation so that it can be
+ * changed easily in the future
  *
  * @author intruder
  */
 public interface IMediaRepository {
 
     void add(Medium medium);
-    
+
     Medium getMediumById(long Id);
-    
+
     List<Medium> getCompleteMediaList();
-    
+
 }
