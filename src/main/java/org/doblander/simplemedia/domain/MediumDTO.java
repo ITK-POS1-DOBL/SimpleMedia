@@ -8,7 +8,9 @@ package org.doblander.simplemedia.domain;
 import javax.validation.constraints.NotNull;
 
 /**
- * Value Objects for communication of Business Domain to UI
+ * Type for value objects of medium objects for communication between
+ * business domain and UI
+ * 
  * @author intruder
  */
 public class MediumDTO {

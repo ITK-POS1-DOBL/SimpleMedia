@@ -6,7 +6,9 @@
 package org.doblander.simplemedia.domain;
 
 /**
- *
+ * A Medium is the central domain object and stores information of a 
+ * concrete medium
+ * 
  * @author intruder
  */
 public class Medium {

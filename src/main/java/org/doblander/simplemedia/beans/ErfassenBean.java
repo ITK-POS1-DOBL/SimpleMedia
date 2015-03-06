@@ -11,7 +11,8 @@ import javax.inject.Inject;
 import org.doblander.simplemedia.domain.MediaLibrary;
 
 /**
- *
+ * Backing bean for media entry page
+ * 
  * @author intruder
  */
 @Named(value = "erfassenBean")

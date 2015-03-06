@@ -14,7 +14,8 @@ import org.doblander.simplemedia.domain.MediaLibrary;
 import org.doblander.simplemedia.domain.MediumDTO;
 
 /**
- * Backing Bean for "suchen.xhtml"
+ * Backing Bean for search page
+ * 
  * @author intruder
  */
 @Named(value = "suchenBean")

@@ -14,7 +14,8 @@ import org.doblander.simplemedia.domain.MediaLibrary;
 import org.doblander.simplemedia.domain.MediumDTO;
 
 /**
- *
+ * Backing bean for inventory page
+ * 
  * @author intruder
  */
 @Named(value = "inventarBean")

@@ -10,7 +10,8 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *
+ * Concrete media repository implementation that stores media in a list
+ * 
  * @author intruder
  */
 public class MediaListRepository implements IMediaRepository {
