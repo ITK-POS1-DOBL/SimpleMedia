@@ -13,13 +13,16 @@ import javax.inject.Named;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
 
 /**
- *
+ * The media library is the central class for handling all use cases
+ * related to handling media and there is exactly one instance in the whole
+ * application.
+ * 
  * @author intruder
  */
 @Named
 @ApplicationScoped
 public class MediaLibrary {
-    
+
     private IMediaRepository mediaRepo = new MediaListRepository();
 
     public void insertMedium(String type, String title, String description) {
@@ -39,28 +42,28 @@ public class MediaLibrary {
      * @return the org.doblander.simplemedia.domain.MediumDTO
      */
     public MediumDTO findMediumById(long Id) {
-        
+
         return mediaRepo.getMediumById(Id).createDTO();
-        
+
     }
 
     public List<Medium> getFullInventory() {
-        
+
         return mediaRepo.getCompleteMediaList();
-        
+
     }
 
     public List<MediumDTO> convertMediumListToDTOList(List<Medium> completeMediaList) {
-        
+
         List<MediumDTO> dtoList = new ArrayList<>();
         Medium tempMedium;
-        
+
         Iterator iterator = completeMediaList.iterator();
-        while(iterator.hasNext()) {
-            tempMedium = (Medium)iterator.next();
+        while (iterator.hasNext()) {
+            tempMedium = (Medium) iterator.next();
             dtoList.add(tempMedium.createDTO());
         }
-        
+
         return dtoList;
     }
 }
