@@ -54,4 +54,20 @@ public class MediaListRepository implements IMediaRepository {
 
         return inventory;
     }
+
+    @Override
+    public void updateMedium(MediumDTO mediumDto) {
+        
+        Medium currentMedium = null;
+        
+        Iterator<Medium> iterator = mediaList.iterator();
+        while (iterator.hasNext()) {
+            currentMedium = iterator.next();
+            if (Long.valueOf(mediumDto.getMediumIdString()) == currentMedium.getId()) {
+                currentMedium.setType(mediumDto.getMediumTypeString());
+            } else {
+                currentMedium = null;
+            }
+        }
+    }
 }

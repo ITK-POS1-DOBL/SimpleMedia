@@ -66,4 +66,8 @@ public class MediaLibrary {
 
         return dtoList;
     }
+
+    public void updateMedium(MediumDTO mediumDto) {
+        mediaRepo.updateMedium(mediumDto);
+    }
 }
