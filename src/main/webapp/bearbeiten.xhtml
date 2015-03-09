@@ -22,17 +22,17 @@
                     </h:panelGrid>
 
                     <h:panelGrid columns="2">
-                        <h:commandButton id="btn_submit" 
-                                         value="Suchen" 
+                        <h:commandButton id="btn_search" 
+                                         value="Search" 
                                          action="#{bearbeitenBean.findMedium}" />
-                        <h:commandButton id="btn_reset" value="Reset" 
+                        <h:commandButton id="btn_reset-search" value="Reset" 
                                          action="#{bearbeitenBean.resetUserInputs}"/>
                     </h:panelGrid>
                 </h:form>
                 
                 <h:form>
                     
-                    <h:outputText value="Suchergebnis" 
+                    <h:outputText value="Search result" 
                                   rendered="#{bearbeitenBean.showResult}" />
                     
                     <h:panelGrid columns="3">
@@ -60,19 +60,19 @@
                                 <f:facet name="header">
                                     <h:outputText value="Medium Title"/>
                                 </f:facet>
-                                <h:outputText value="#{__tableItem.mediumTitleString}"/>
+                                <h:inputText value="#{__tableItem.mediumTitleString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Description"/>
                                 </f:facet>
-                                <h:outputText value="#{__tableItem.mediumDescString}"/>
+                                <h:inputText value="#{__tableItem.mediumDescString}"/>
                             </h:column>
 
                         </h:dataTable>
                                  
                         <h:commandButton id="btn_update" 
-                                         value="Bearbeiten" 
+                                         value="Update" 
                                          rendered="#{bearbeitenBean.showResult}"
                                          action="#{bearbeitenBean.updateMedium}" />
                         <h:commandButton id="btn_reset-update" 

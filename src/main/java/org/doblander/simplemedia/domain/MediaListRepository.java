@@ -8,6 +8,7 @@ package org.doblander.simplemedia.domain;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.annotation.PostConstruct;
 
 /**
  * Concrete media repository implementation that stores media in a list.
@@ -17,7 +18,7 @@ import java.util.List;
 public class MediaListRepository implements IMediaRepository {
  
     private static List<Medium> mediaList = new ArrayList<>();
-
+    
     @Override
     public void add(Medium medium) {
         mediaList.add(medium);
@@ -69,5 +70,14 @@ public class MediaListRepository implements IMediaRepository {
                 currentMedium = null;
             }
         }
+    }
+
+    @PostConstruct
+    private void initializeRepo() {
+        add(new Medium("cd", "cd1", "a cd"));
+        add(new Medium("dvd", "dvd1", "a dvd"));
+        add(new Medium("cd", "cd2", "another cd"));
+        add(new Medium("bd", "bd1", "a bd"));
+        add(new Medium("dvd", "dvd2", "a second dvd"));
     }
 }

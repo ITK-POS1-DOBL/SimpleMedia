@@ -5,10 +5,12 @@
  */
 package org.doblander.simplemedia.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import org.doblander.simplemedia.domain.MediaLibrary;
 import org.doblander.simplemedia.domain.MediumDTO;
@@ -19,9 +21,11 @@ import org.doblander.simplemedia.util.SimpleMediaLogger;
  * @author intruder
  */
 @Named(value = "bearbeitenBean")
-@RequestScoped
-public class BearbeitenBean {
+@SessionScoped
+public class BearbeitenBean implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
     private String mediumIdString;
     private String mediumTypeString;
     private String mediumTitleString;
@@ -50,10 +54,11 @@ public class BearbeitenBean {
 
             resetUserInputs();
         }
+        resetUserInputs();
     }
 
     public void resetUserInputs() {
-        setMediumIdString("0");
+        //setMediumIdString("0");
         setShowResult(false);
         dataTableEntries.clear();
     }

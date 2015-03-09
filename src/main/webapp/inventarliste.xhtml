@@ -13,15 +13,15 @@
                 <h:form>
                     <h:panelGrid columns="2">
                         <h:commandButton id="btn_submit" 
-                                         value="Submit" 
+                                         value="Show list" 
                                          action="#{inventarBean.retrieveInventory}" />
                         <h:commandButton id="btn_reset" value="Reset" 
                                          action="#{inventarBean.resetResults}"/>
                     </h:panelGrid>
                     
                     <h:panelGrid columns="1">
-                        <h:outputText value="Inventarliste" 
-                                      rendered="#{inventarBean.showResult}" />
+                        <h:outputText value="Full list of inventory" 
+                                          rendered="#{inventarBean.showResult}" />
 
                         <h:dataTable id="dataTable" 
                                      border="1"
