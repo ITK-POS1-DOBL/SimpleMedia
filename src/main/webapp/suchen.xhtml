@@ -36,31 +36,32 @@
                         <h:dataTable id="dataTable" 
                                      border="1"
                                      rendered="#{suchenBean.showResult}"
-                                     value="#{suchenBean.dataTableEntries}" >
+                                     value="#{suchenBean.dataTableEntries}" 
+                                     var="__tableItem">
 
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium ID"/>
                                 </f:facet>
-                                <h:outputText value="#{suchenBean.mediumIdString}"/>
+                                <h:outputText value="#{__tableItem.mediumIdString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Type"/>
                                 </f:facet>
-                                <h:outputText value="#{suchenBean.mediumTypeString}"/>
+                                <h:outputText value="#{__tableItem.mediumTypeString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Title"/>
                                 </f:facet>
-                                <h:outputText value="#{suchenBean.mediumTitleString}"/>
+                                <h:outputText value="#{__tableItem.mediumTitleString}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Medium Description"/>
                                 </f:facet>
-                                <h:outputText value="#{suchenBean.mediumDescString}"/>
+                                <h:outputText value="#{__tableItem.mediumDescString}"/>
                             </h:column>
 
                         </h:dataTable>
