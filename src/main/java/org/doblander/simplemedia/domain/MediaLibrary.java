@@ -8,6 +8,7 @@ package org.doblander.simplemedia.domain;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
@@ -73,5 +74,14 @@ public class MediaLibrary {
 
     public void deleteItemById(Long mediumId) {
         mediaRepo.deleteMediumById(mediumId);
+    }
+    
+    @PostConstruct
+    private void initializeMediaLib() {
+        insertMedium("cd", "cd1", "a cd");
+        insertMedium("dvd", "dvd1", "a dvd");
+        insertMedium("cd", "cd2", "another cd");
+        insertMedium("bd", "bd1", "a bd");
+        insertMedium("minidisk", "minidisk1", "an ancient medium");
     }
 }
