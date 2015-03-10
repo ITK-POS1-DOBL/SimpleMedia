@@ -23,9 +23,6 @@ import org.doblander.simplemedia.domain.MediumDTO;
 public class SuchenBean {
     
     private String mediumIdString;
-    private String mediumTypeString;
-    private String mediumTitleString;
-    private String mediumDescString;
     private boolean showResult = false;
     private List<MediumDTO> dataTableEntries;
     private MediumDTO dataTableEntry;
@@ -45,9 +42,6 @@ public class SuchenBean {
     public void findMedium() {
         MediumDTO mediumVals = medLib.findMediumById(convertIdStringToLong(mediumIdString));
         if ((mediumVals != null) && (mediumVals.getMediumIdString().equalsIgnoreCase(mediumIdString))) {
-            this.setMediumTypeString(mediumVals.getMediumTypeString());
-            this.setMediumTitleString(mediumVals.getMediumTitleString());
-            this.setMediumDescString(mediumVals.getMediumDescString());
             this.dataTableEntries.add(mediumVals);
             this.showResult = true;
         }
@@ -69,30 +63,6 @@ public class SuchenBean {
 
     public void setMediumIdString(String mediumIdString) {
         this.mediumIdString = mediumIdString;
-    }
-
-    public String getMediumTypeString() {
-        return mediumTypeString;
-    }
-
-    public void setMediumTypeString(String mediumTypeString) {
-        this.mediumTypeString = mediumTypeString;
-    }
-
-    public String getMediumTitleString() {
-        return mediumTitleString;
-    }
-
-    public void setMediumTitleString(String mediumTitleString) {
-        this.mediumTitleString = mediumTitleString;
-    }
-
-    public String getMediumDescString() {
-        return mediumDescString;
-    }
-
-    public void setMediumDescString(String mediumDescString) {
-        this.mediumDescString = mediumDescString;
     }
 
     public boolean isShowResult() {
