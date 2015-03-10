@@ -71,13 +71,4 @@ public class MediaListRepository implements IMediaRepository {
             }
         }
     }
-
-    @PostConstruct
-    private void initializeRepo() {
-        add(new Medium("cd", "cd1", "a cd"));
-        add(new Medium("dvd", "dvd1", "a dvd"));
-        add(new Medium("cd", "cd2", "another cd"));
-        add(new Medium("bd", "bd1", "a bd"));
-        add(new Medium("dvd", "dvd2", "a second dvd"));
-    }
 }

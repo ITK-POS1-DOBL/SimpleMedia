@@ -54,7 +54,6 @@ public class BearbeitenBean implements Serializable {
 
             resetUserInputs();
         }
-        resetUserInputs();
     }
 
     public void resetUserInputs() {
