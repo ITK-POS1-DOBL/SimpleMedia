@@ -23,7 +23,7 @@ import org.doblander.simplemedia.util.SimpleMediaLogger;
 @ApplicationScoped
 public class MediaLibrary {
 
-    private IMediaRepository mediaRepo = new MediaListRepository();
+    private static final IMediaRepository mediaRepo = new MediaListRepository();
 
     public void insertMedium(String type, String title, String description) {
         Medium tempMedium = new Medium(type, title, description);
@@ -65,5 +65,9 @@ public class MediaLibrary {
         }
 
         return dtoList;
+    }
+
+    public void updateMedium(MediumDTO mediumDto) {
+        mediaRepo.updateMedium(mediumDto);
     }
 }

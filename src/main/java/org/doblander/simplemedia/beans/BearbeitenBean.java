@@ -5,70 +5,103 @@
  */
 package org.doblander.simplemedia.beans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import org.doblander.simplemedia.domain.MediaLibrary;
 import org.doblander.simplemedia.domain.MediumDTO;
+import org.doblander.simplemedia.util.SimpleMediaLogger;
 
 /**
- * Backing Bean for search page
- * 
+ *
  * @author intruder
  */
-@Named(value = "suchenBean")
-@RequestScoped
-public class SuchenBean {
+@Named(value = "bearbeitenBean")
+@SessionScoped
+public class BearbeitenBean implements Serializable {
+
+    private static final long serialVersionUID = 1L;
     
     private String mediumIdString;
     private String mediumTypeString;
     private String mediumTitleString;
     private String mediumDescString;
+
     private boolean showResult = false;
+
     private List<MediumDTO> dataTableEntries;
-    private MediumDTO dataTableEntry;
-    
+
     @Inject
     private MediaLibrary medLib;
 
-    /** 
-     * Default constructor
-     * @author Intruder
+    /**
+     * Creates a new instance of BearbeitenBean
      */
-    public SuchenBean() {
-         this.dataTableEntries = new ArrayList<>();
+    public BearbeitenBean() {
+        this.dataTableEntries = new ArrayList<>();
     }
 
-    
     public void findMedium() {
         MediumDTO mediumVals = medLib.findMediumById(convertIdStringToLong(mediumIdString));
         if ((mediumVals != null) && (mediumVals.getMediumIdString().equalsIgnoreCase(mediumIdString))) {
-            this.setMediumTypeString(mediumVals.getMediumTypeString());
-            this.setMediumTitleString(mediumVals.getMediumTitleString());
-            this.setMediumDescString(mediumVals.getMediumDescString());
             this.dataTableEntries.add(mediumVals);
             this.showResult = true;
-        }
-        else {
-            
+        } else {
+
             resetUserInputs();
         }
     }
-    
+
     public void resetUserInputs() {
-        setMediumIdString("0");
+        //setMediumIdString("0");
         setShowResult(false);
         dataTableEntries.clear();
     }
-    
+
+    public void updateMedium() {
+        // safe all changes made by the user to the media lib (repository)
+        
+        if (dataTableEntries.size() == 1) {
+            MediumDTO medDto = new MediumDTO();        
+            medDto = dataTableEntries.get(0);
+            medLib.updateMedium(medDto);
+            SimpleMediaLogger.logInfo("Updating medium to: " + medDto.getMediumTypeString());
+        }
+        else {
+            SimpleMediaLogger.logSevere("Search result was ambiguous!");
+        }        
+    }
+
+    public void resetUpdate() {
+        resetUserInputs();
+    }
+
     public String getMediumIdString() {
         return mediumIdString;
     }
 
     public void setMediumIdString(String mediumIdString) {
         this.mediumIdString = mediumIdString;
+    }
+
+    public boolean isShowResult() {
+        return showResult;
+    }
+
+    public void setShowResult(boolean showResult) {
+        this.showResult = showResult;
+    }
+
+    public List<MediumDTO> getDataTableEntries() {
+        return dataTableEntries;
+    }
+
+    public void setDataTableEntries(List<MediumDTO> dataTableEntries) {
+        this.dataTableEntries = dataTableEntries;
     }
 
     public String getMediumTypeString() {
@@ -95,34 +128,8 @@ public class SuchenBean {
         this.mediumDescString = mediumDescString;
     }
 
-    public boolean isShowResult() {
-        return showResult;
-    }
-
-    public void setShowResult(boolean showResult) {
-        this.showResult = showResult;
-    }
-
-    public List<MediumDTO> getDataTableEntries() {
-        return dataTableEntries;
-    }
-
-    public void setDataTableEntries(List<MediumDTO> dataTableEntries) {
-        this.dataTableEntries = dataTableEntries;
-    }
-
-    public MediumDTO getDataTableEntry() {
-        return dataTableEntry;
-    }
-
-    public void setDataTableEntry(MediumDTO dataTableEntry) {
-        this.dataTableEntry = dataTableEntry;
-    }
-    
     private long convertIdStringToLong(String mediumIdString) {
         return Long.parseLong(mediumIdString);
     }
-    
-    
-    
+
 }

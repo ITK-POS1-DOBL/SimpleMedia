@@ -21,4 +21,6 @@ public interface IMediaRepository {
 
     List<Medium> getCompleteMediaList();
 
+    public void updateMedium(MediumDTO mediumDto);
+
 }

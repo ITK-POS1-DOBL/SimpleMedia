@@ -16,7 +16,11 @@ public class SimpleMediaLogger {
     private static final Logger smlogger
             = Logger.getLogger("org.doblander.simplemedia.domain.MediaLibrary");
     
-    public static void logInfo(String infoText) {
-        smlogger.log(Level.INFO, infoText);
+    public static void logInfo(String msgText) {
+        smlogger.log(Level.INFO, msgText);
+    }
+    
+    public static void logSevere(String msgText) {
+        smlogger.log(Level.SEVERE, msgText);
     }
 }

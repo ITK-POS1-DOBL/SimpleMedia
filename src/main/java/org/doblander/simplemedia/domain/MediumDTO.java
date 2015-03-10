@@ -20,7 +20,13 @@ public class MediumDTO {
     private String mediumTitleString;
     private String mediumDescString;
 
-    MediumDTO(long Id, String type, String title, String description) {
+    public MediumDTO() {
+        this.mediumIdString = "";
+        this.mediumTypeString = "";
+        this.mediumTitleString = "";
+        this.mediumDescString = "";
+    }
+    public MediumDTO(long Id, String type, String title, String description) {
         this.mediumIdString = Long.toString(Id);
         this.mediumTypeString = type;
         this.mediumTitleString = title;
