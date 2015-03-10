@@ -36,7 +36,7 @@ public class LoeschenBean {
     }
     
     public void deleteMedium() {
-        
+        mediaLib.deleteItemById(Long.valueOf(mediumIdString));
         retrieveInventory();
     }
     

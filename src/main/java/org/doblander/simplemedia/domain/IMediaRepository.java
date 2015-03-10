@@ -23,4 +23,6 @@ public interface IMediaRepository {
 
     public void updateMedium(MediumDTO mediumDto);
 
+    public void deleteMediumById(Long mediumId);
+
 }

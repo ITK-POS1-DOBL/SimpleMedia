@@ -71,4 +71,20 @@ public class MediaListRepository implements IMediaRepository {
             }
         }
     }
+
+    @Override
+    public void deleteMediumById(Long mediumId) {
+        
+        Medium currentMedium = null;
+        
+        Iterator<Medium> iterator = mediaList.iterator();
+        while (iterator.hasNext()) {
+            currentMedium = iterator.next();
+            if (mediumId == currentMedium.getId()) {
+                iterator.remove();
+            } else {
+                currentMedium = null;
+            }
+        }
+    }
 }

@@ -70,4 +70,8 @@ public class MediaLibrary {
     public void updateMedium(MediumDTO mediumDto) {
         mediaRepo.updateMedium(mediumDto);
     }
+
+    public void deleteItemById(Long mediumId) {
+        mediaRepo.deleteMediumById(mediumId);
+    }
 }
