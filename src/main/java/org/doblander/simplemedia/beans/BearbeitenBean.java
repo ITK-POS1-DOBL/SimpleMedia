@@ -8,10 +8,9 @@ package org.doblander.simplemedia.beans;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.ejb.EJB;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.inject.Inject;
 import org.doblander.simplemedia.domain.MediaLibrary;
 import org.doblander.simplemedia.domain.MediumDTO;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
@@ -35,7 +34,7 @@ public class BearbeitenBean implements Serializable {
 
     private List<MediumDTO> dataTableEntries;
 
-    @Inject
+    @EJB
     private MediaLibrary medLib;
 
     /**

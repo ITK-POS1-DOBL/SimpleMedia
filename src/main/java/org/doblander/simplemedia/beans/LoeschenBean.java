@@ -6,9 +6,9 @@
 package org.doblander.simplemedia.beans;
 
 import java.util.List;
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import org.doblander.simplemedia.domain.MediaLibrary;
 import org.doblander.simplemedia.domain.MediumDTO;
 
@@ -26,7 +26,7 @@ public class LoeschenBean {
     
     private List<MediumDTO> mediaList;
 
-    @Inject
+    @EJB
     private MediaLibrary mediaLib;
     
     /**

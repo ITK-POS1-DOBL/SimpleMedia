@@ -5,9 +5,9 @@
  */
 package org.doblander.simplemedia.beans;
 
+import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import org.doblander.simplemedia.domain.MediaLibrary;
 
 /**
@@ -23,7 +23,7 @@ public class ErfassenBean {
     private String title;
     private String description;
 
-    @Inject
+    @EJB
     private MediaLibrary theLib;
 
     /**
