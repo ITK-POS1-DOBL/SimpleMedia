@@ -46,6 +46,7 @@ public class BearbeitenBean implements Serializable {
     }
 
     public void findMedium() {
+        resetUserInputs();
         MediumDTO mediumVals = medLib.findMediumById(convertIdStringToLong(mediumIdString));
         if ((mediumVals != null) && (mediumVals.getMediumIdString().equalsIgnoreCase(mediumIdString))) {
             this.dataTableEntries.add(mediumVals);
