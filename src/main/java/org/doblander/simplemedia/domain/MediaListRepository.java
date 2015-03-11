@@ -56,7 +56,8 @@ public class MediaListRepository implements IMediaRepository {
         return inventory;
     }
 
-    @Override
+     //FIXME: updateMedium should only deal with Medium objects!
+    @Override 
     public void updateMedium(MediumDTO mediumDto) {
         
         Medium currentMedium = null;
