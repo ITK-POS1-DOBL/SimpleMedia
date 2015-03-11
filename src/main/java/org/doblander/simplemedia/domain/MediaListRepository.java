@@ -29,9 +29,9 @@ public class MediaListRepository implements IMediaRepository {
         
         Medium currentMedium = null;
         
-        Iterator iterator = mediaList.iterator();
+        Iterator<Medium> iterator = mediaList.iterator();
         while (iterator.hasNext()) {
-            currentMedium = (Medium)iterator.next();
+            currentMedium = iterator.next();
             if (Id == currentMedium.getId()) {
                 return currentMedium;
             } else {
