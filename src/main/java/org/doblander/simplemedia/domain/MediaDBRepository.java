@@ -8,6 +8,7 @@ package org.doblander.simplemedia.domain;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Concrete media repository implementation that stores media in a database.
@@ -16,7 +17,7 @@ import javax.persistence.EntityManager;
  */
 class MediaDBRepository implements IMediaRepository {
 
-    @Resource
+    @PersistenceContext
     private static EntityManager em;
     
     public MediaDBRepository() {
@@ -34,7 +35,7 @@ class MediaDBRepository implements IMediaRepository {
 
     @Override
     public List<Medium> getCompleteMediaList() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return em.createQuery("SELECT m FROM Medium m").getResultList();
     }
 
     @Override

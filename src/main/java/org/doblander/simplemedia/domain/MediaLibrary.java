@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.annotation.security.RunAs;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
@@ -22,12 +21,12 @@ import org.doblander.simplemedia.util.SimpleMediaLogger;
  * @author intruder
  */
 @Singleton
-//@Startup
+@Startup
 //@RunAs("userRole")
 public class MediaLibrary {
 
-    private static final IMediaRepository mediaRepo = new MediaListRepository();
-    //private static final IMediaRepository mediaRepo = new MediaDBRepository();
+    //private static final IMediaRepository mediaRepo = new MediaListRepository();
+    private static final IMediaRepository mediaRepo = new MediaDBRepository();
 
     public void insertMedium(String type, String title, String description) {
         Medium tempMedium = new Medium(type, title, description);
