@@ -6,7 +6,7 @@
 package org.doblander.simplemedia.domain;
 
 import java.util.List;
-import javax.annotation.Resource;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -15,10 +15,11 @@ import javax.persistence.PersistenceContext;
  * 
  * @author intruder
  */
-class MediaDBRepository implements IMediaRepository {
+@Stateless
+public class MediaDBRepository implements IMediaRepository {
 
     @PersistenceContext
-    private static EntityManager em;
+    private EntityManager em;
     
     public MediaDBRepository() {
     }
