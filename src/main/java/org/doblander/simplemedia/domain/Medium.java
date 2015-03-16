@@ -5,14 +5,22 @@
  */
 package org.doblander.simplemedia.domain;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * A Medium is the central domain object and stores information of a 
  * concrete medium.
  * 
  * @author intruder
  */
-public class Medium {
+@Entity
+public class Medium implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
+    @Id
     private long Id;
     private String type;
     private String title;
