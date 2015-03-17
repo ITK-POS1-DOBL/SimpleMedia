@@ -90,4 +90,9 @@ public class MediaListRepository implements IMediaRepository {
             }
         }
     }
+
+    @Override
+    public boolean isInitializedWithData() {
+        return (mediaList.size() >= 5);
+    }
 }

@@ -27,4 +27,6 @@ public interface IMediaRepository {
 
     public void deleteMediumById(Long mediumId);
 
+    public boolean isInitializedWithData();
+
 }

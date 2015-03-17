@@ -15,15 +15,13 @@ import javax.ejb.Startup;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
 
 /**
- * The media library is the central class for handling all use cases
- * related to handling media and there is exactly one instance in the whole
- * application.
- * 
+ * The media library is the central class for handling all use cases related to
+ * handling media and there is exactly one instance in the whole application.
+ *
  * @author intruder
  */
 @Singleton
 @Startup
-//@RunAs("userRole")
 public class MediaLibrary {
 
     //private static final IMediaRepository mediaRepo = new MediaListRepository();
@@ -79,16 +77,19 @@ public class MediaLibrary {
     public void deleteItemById(Long mediumId) {
         mediaRepo.deleteMediumById(mediumId);
     }
-    
+
     @PostConstruct
     private void initializeMediaLib() {
         /* DB is already initialized so no more initialization code needed
          * at the moment!
-        insertMedium("cd", "cd1", "a cd");
-        insertMedium("dvd", "dvd1", "a dvd");
-        insertMedium("cd", "cd2", "another cd");
-        insertMedium("bd", "bd1", "a bd");
-        insertMedium("minidisk", "minidisk1", "an ancient medium");
-        */
+         */
+
+        if (!mediaRepo.isInitializedWithData()) {
+            insertMedium("cd", "cd1", "a cd");
+            insertMedium("dvd", "dvd1", "a dvd");
+            insertMedium("cd", "cd2", "another cd");
+            insertMedium("bd", "bd1", "a bd");
+            insertMedium("minidisk", "minidisk1", "an ancient medium");
+        }
     }
 }

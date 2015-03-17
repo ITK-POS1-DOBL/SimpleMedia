@@ -52,5 +52,10 @@ public class MediaDBRepository implements IMediaRepository {
     public void deleteMediumById(Long mediumId) {
         em.remove(getMediumById(mediumId));
     }
+
+    @Override
+    public boolean isInitializedWithData() {
+        return (getCompleteMediaList().size() >= 5);
+    }
     
 }
