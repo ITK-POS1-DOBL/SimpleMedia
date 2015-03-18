@@ -19,7 +19,7 @@ import org.doblander.simplemedia.domain.MediaLibrary;
 @RequestScoped
 public class ErfassenBean {
 
-    private String type;
+    private String category;
     private String title;
     private String description;
 
@@ -33,23 +33,23 @@ public class ErfassenBean {
     }
 
     public void saveMedium() {
-        theLib.insertMedium(type, title, description);
+        theLib.insertMedium(category, title, description);
         resetUserInputs();
 
     }
 
     public void resetUserInputs() {
-        setType("");
+        setCategory("");
         setTitle("");
         setDescription("");
     }
 
-    public String getType() {
-        return type;
+    public String getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getTitle() {

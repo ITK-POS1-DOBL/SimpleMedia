@@ -40,7 +40,8 @@ public class SuchenBean {
 
     
     public void findMedium() {
-        MediumDTO mediumVals = medLib.findMediumById(convertIdStringToLong(mediumIdString));
+        MediumDTO mediumVals = 
+                medLib.findMediumById(convertIdStringToLong(mediumIdString));
         if ((mediumVals != null) && (mediumVals.getMediumIdString().equalsIgnoreCase(mediumIdString))) {
             this.dataTableEntries.add(mediumVals);
             this.showResult = true;

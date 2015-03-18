@@ -27,15 +27,15 @@ public class Medium implements Serializable {
     @SequenceGenerator(name = "seqGen", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGen")
     private long Id;
-    private String type;
+    private String category;
     private String title;
     private String description;
 
     public Medium() {
     }
 
-    public Medium(String type, String title, String description) {
-        this.type = type;
+    public Medium(String category, String title, String description) {
+        this.category = category;
         this.title = title;
         this.description = description;
     }
@@ -44,12 +44,12 @@ public class Medium implements Serializable {
         return Id;
     }
 
-    public String getType() {
-        return type;
+    public String getCategory() {
+        return category;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getTitle() {
@@ -69,7 +69,7 @@ public class Medium implements Serializable {
     }
 
     MediumDTO createDTO() {
-        return new MediumDTO(this.Id, this.type, this.title, this.description);
+        return new MediumDTO(this.Id, this.category, this.title, this.description);
     }
 
 }

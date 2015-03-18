@@ -14,20 +14,20 @@ package org.doblander.simplemedia.domain;
 public class MediumDTO {
 
     private String mediumIdString;
-    private String mediumTypeString;
+    private String mediumCategoryString;
     private String mediumTitleString;
     private String mediumDescString;
 
     public MediumDTO() {
         this.mediumIdString = "";
-        this.mediumTypeString = "";
+        this.mediumCategoryString = "";
         this.mediumTitleString = "";
         this.mediumDescString = "";
     }
 
     public MediumDTO(long Id, String type, String title, String description) {
         this.mediumIdString = Long.toString(Id);
-        this.mediumTypeString = type;
+        this.mediumCategoryString = type;
         this.mediumTitleString = title;
         this.mediumDescString = description;
 
@@ -41,12 +41,12 @@ public class MediumDTO {
         this.mediumIdString = mediumIdString;
     }
 
-    public String getMediumTypeString() {
-        return mediumTypeString;
+    public String getMediumCategoryString() {
+        return mediumCategoryString;
     }
 
-    public void setMediumTypeString(String mediumTypeString) {
-        this.mediumTypeString = mediumTypeString;
+    public void setMediumCategoryString(String mediumCategoryString) {
+        this.mediumCategoryString = mediumCategoryString;
     }
 
     public String getMediumTitleString() {

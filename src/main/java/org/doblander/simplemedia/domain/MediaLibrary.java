@@ -28,13 +28,13 @@ public class MediaLibrary {
     @EJB
     private IMediaRepository mediaRepo;
 
-    public void insertMedium(String type, String title, String description) {
-        Medium tempMedium = new Medium(type, title, description);
+    public void insertMedium(String category, String title, String description) {
+        Medium tempMedium = new Medium(category, title, description);
 
         mediaRepo.add(tempMedium);
 
         // Log-Output for debugging...
-        SimpleMediaLogger.logInfo("added medium: " + type + ", " + title
+        SimpleMediaLogger.logInfo("added medium: " + category + ", " + title
                 + ", " + description);
     }
 

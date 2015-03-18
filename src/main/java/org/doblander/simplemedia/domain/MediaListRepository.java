@@ -65,7 +65,7 @@ public class MediaListRepository implements IMediaRepository {
         while (iterator.hasNext()) {
             currentMedium = iterator.next();
             if (Long.valueOf(mediumDto.getMediumIdString()) == currentMedium.getId()) {
-                currentMedium.setType(mediumDto.getMediumTypeString());
+                currentMedium.setCategory(mediumDto.getMediumCategoryString());
                 currentMedium.setTitle(mediumDto.getMediumTitleString());
                 currentMedium.setDescription(mediumDto.getMediumDescString());
             } else {

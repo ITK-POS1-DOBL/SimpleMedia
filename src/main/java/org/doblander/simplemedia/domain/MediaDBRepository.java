@@ -39,10 +39,11 @@ public class MediaDBRepository implements IMediaRepository {
         return em.createQuery("SELECT m FROM Medium m").getResultList();
     }
 
+    /* FIXME: updateMedium should only deal with Medium objects! */
     @Override
     public void updateMedium(MediumDTO mediumDto) {
         Medium medium = em.find(Medium.class, Long.valueOf(mediumDto.getMediumIdString()));
-        medium.setType(mediumDto.getMediumTypeString());
+        medium.setCategory(mediumDto.getMediumCategoryString());
         medium.setTitle(mediumDto.getMediumTitleString());
         medium.setDescription(mediumDto.getMediumDescString());
         em.flush();

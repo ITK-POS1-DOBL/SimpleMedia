@@ -9,14 +9,13 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import org.doblander.simplemedia.domain.MediaLibrary;
 import org.doblander.simplemedia.domain.MediumDTO;
 
 /**
  * Backing bean for inventory page
- * 
+ *
  * @author intruder
  */
 @Named(value = "inventarBean")
@@ -24,7 +23,7 @@ import org.doblander.simplemedia.domain.MediumDTO;
 public class InventarBean {
 
     private boolean showResult = false;
-    
+
     private List<MediumDTO> mediaList;
 
     @EJB
@@ -41,10 +40,10 @@ public class InventarBean {
 
     public void retrieveInventory() {
         this.setMediaList(mediaLib.convertMediumListToDTOList(
-                        mediaLib.getFullInventory()));
+                mediaLib.getFullInventory()));
         this.setShowResult(true);
     }
-    
+
     public void resetResults() {
         setShowResult(false);
         mediaList = null;

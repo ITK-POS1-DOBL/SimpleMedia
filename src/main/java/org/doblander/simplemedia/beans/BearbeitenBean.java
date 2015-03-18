@@ -24,9 +24,9 @@ import org.doblander.simplemedia.util.SimpleMediaLogger;
 public class BearbeitenBean implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     private String mediumIdString;
-    private String mediumTypeString;
+    private String mediumCategoryString;
     private String mediumTitleString;
     private String mediumDescString;
 
@@ -46,12 +46,17 @@ public class BearbeitenBean implements Serializable {
 
     public void findMedium() {
         resetUserInputs();
-        MediumDTO mediumVals = medLib.findMediumById(convertIdStringToLong(mediumIdString));
-        if ((mediumVals != null) && (mediumVals.getMediumIdString().equalsIgnoreCase(mediumIdString))) {
+        
+        MediumDTO mediumVals = 
+                medLib.findMediumById(convertIdStringToLong(mediumIdString));
+        
+        if ((mediumVals != null) && (mediumVals.getMediumIdString().
+                equalsIgnoreCase(mediumIdString))) {
+         
             this.dataTableEntries.add(mediumVals);
             this.showResult = true;
+        
         } else {
-
             resetUserInputs();
         }
     }
@@ -64,16 +69,16 @@ public class BearbeitenBean implements Serializable {
 
     public void updateMedium() {
         // safe all changes made by the user to the media lib (repository)
-        
+
         if (dataTableEntries.size() == 1) {
-            MediumDTO medDto = new MediumDTO();        
+            MediumDTO medDto = new MediumDTO();
             medDto = dataTableEntries.get(0);
             medLib.updateMedium(medDto);
-            SimpleMediaLogger.logInfo("Updating medium to: " + medDto.getMediumTypeString());
-        }
-        else {
+            SimpleMediaLogger.logInfo("Updating medium to: " + 
+                    medDto.getMediumCategoryString());
+        } else {
             SimpleMediaLogger.logSevere("Search result was ambiguous!");
-        }        
+        }
     }
 
     public void resetUpdate() {
@@ -104,12 +109,12 @@ public class BearbeitenBean implements Serializable {
         this.dataTableEntries = dataTableEntries;
     }
 
-    public String getMediumTypeString() {
-        return mediumTypeString;
+    public String getMediumCategoryString() {
+        return mediumCategoryString;
     }
 
-    public void setMediumTypeString(String mediumTypeString) {
-        this.mediumTypeString = mediumTypeString;
+    public void setMediumCategoryString(String mediumCategoryString) {
+        this.mediumCategoryString = mediumCategoryString;
     }
 
     public String getMediumTitleString() {
