@@ -5,16 +5,14 @@
  */
 package org.doblander.simplemedia.domain;
 
-import javax.validation.constraints.NotNull;
-
 /**
- * Type for value objects of medium objects for communication between
- * business domain and UI
- * 
+ * Type for value objects of medium objects for communication between business
+ * domain and UI
+ *
  * @author intruder
  */
 public class MediumDTO {
-    
+
     private String mediumIdString;
     private String mediumTypeString;
     private String mediumTitleString;
@@ -26,12 +24,13 @@ public class MediumDTO {
         this.mediumTitleString = "";
         this.mediumDescString = "";
     }
+
     public MediumDTO(long Id, String type, String title, String description) {
         this.mediumIdString = Long.toString(Id);
         this.mediumTypeString = type;
         this.mediumTitleString = title;
         this.mediumDescString = description;
-        
+
     }
 
     public String getMediumIdString() {
@@ -65,6 +64,5 @@ public class MediumDTO {
     public void setMediumDescString(String mediumDescString) {
         this.mediumDescString = mediumDescString;
     }
-    
-    
+
 }

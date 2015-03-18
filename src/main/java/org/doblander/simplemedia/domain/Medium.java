@@ -13,24 +13,23 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
 /**
- * A Medium is the central domain object and stores information of a 
- * concrete medium.
- * 
+ * A Medium is the central domain object and stores information of a concrete
+ * medium.
+ *
  * @author intruder
  */
 @Entity
 public class Medium implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @SequenceGenerator(name="seqGen", initialValue=1, allocationSize=1)
+    @SequenceGenerator(name = "seqGen", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGen")
     private long Id;
     private String type;
     private String title;
     private String description;
-
 
     public Medium() {
     }
@@ -73,5 +72,4 @@ public class Medium implements Serializable {
         return new MediumDTO(this.Id, this.type, this.title, this.description);
     }
 
-    
 }

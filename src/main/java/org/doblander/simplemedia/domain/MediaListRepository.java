@@ -8,17 +8,16 @@ package org.doblander.simplemedia.domain;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.PostConstruct;
 
 /**
  * Concrete media repository implementation that stores media in a list.
- * 
+ *
  * @author intruder
  */
 public class MediaListRepository implements IMediaRepository {
- 
+
     private static List<Medium> mediaList = new ArrayList<>();
-    
+
     @Override
     public void add(Medium medium) {
         mediaList.add(medium);
@@ -26,9 +25,9 @@ public class MediaListRepository implements IMediaRepository {
 
     @Override
     public Medium getMediumById(long Id) {
-        
+
         Medium currentMedium = null;
-        
+
         Iterator<Medium> iterator = mediaList.iterator();
         while (iterator.hasNext()) {
             currentMedium = iterator.next();
@@ -49,19 +48,19 @@ public class MediaListRepository implements IMediaRepository {
 
         Iterator iterator = mediaList.iterator();
         while (iterator.hasNext()) {
-            inventory.add(((Medium)iterator.next()));
-            
+            inventory.add(((Medium) iterator.next()));
+
         }
 
         return inventory;
     }
 
-     //FIXME: updateMedium should only deal with Medium objects!
-    @Override 
+    //FIXME: updateMedium should only deal with Medium objects!
+    @Override
     public void updateMedium(MediumDTO mediumDto) {
-        
+
         Medium currentMedium = null;
-        
+
         Iterator<Medium> iterator = mediaList.iterator();
         while (iterator.hasNext()) {
             currentMedium = iterator.next();
@@ -77,9 +76,9 @@ public class MediaListRepository implements IMediaRepository {
 
     @Override
     public void deleteMediumById(Long mediumId) {
-        
+
         Medium currentMedium = null;
-        
+
         Iterator<Medium> iterator = mediaList.iterator();
         while (iterator.hasNext()) {
             currentMedium = iterator.next();

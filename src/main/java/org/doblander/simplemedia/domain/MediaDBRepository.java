@@ -12,7 +12,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  * Concrete media repository implementation that stores media in a database.
- * 
+ *
  * @author intruder
  */
 @Stateless
@@ -20,7 +20,7 @@ public class MediaDBRepository implements IMediaRepository {
 
     @PersistenceContext
     private EntityManager em;
-    
+
     public MediaDBRepository() {
     }
 
@@ -57,5 +57,5 @@ public class MediaDBRepository implements IMediaRepository {
     public boolean isInitializedWithData() {
         return (getCompleteMediaList().size() >= 5);
     }
-    
+
 }
