@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core" >
+
+    <body>
+
+        <ui:composition template="./../templates/template.xhtml">
+
+            <ui:define name="content">
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:commandButton id="btn_submit" 
+                                         value="Show list" 
+                                         action="#{adminBean.retrieveCategories}" />
+                        <h:commandButton id="btn_reset" value="Reset" 
+                                         action="#{adminBean.resetResults}"/>
+                    </h:panelGrid>
+                    
+                    <h:panelGrid columns="1">
+                        <h:outputText value="Full list of categories" 
+                                          rendered="#{adminBean.showResult}" />
+
+                        <h:dataTable id="dataTable" 
+                                     border="1"
+                                     rendered="#{adminBean.showResult}"
+                                     value="#{adminBean.catList}"
+                                     var="__tableItem" >
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Category ID"/>
+                                </f:facet>
+                                <h:outputText value="#{__tableItem.idString}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Category Text"/>
+                                </f:facet>
+                                <h:outputText value="#{__tableItem.textString}"/>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGrid>
+
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

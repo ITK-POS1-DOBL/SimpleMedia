@@ -26,7 +26,7 @@ public class Medium implements Serializable {
     @Id
     @SequenceGenerator(name = "seqGen", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGen")
-    private long Id;
+    private long id;
     private String category;
     private String title;
     private String description;
@@ -41,7 +41,7 @@ public class Medium implements Serializable {
     }
 
     public long getId() {
-        return Id;
+        return id;
     }
 
     public String getCategory() {
@@ -69,7 +69,7 @@ public class Medium implements Serializable {
     }
 
     MediumDTO createDTO() {
-        return new MediumDTO(this.Id, this.category, this.title, this.description);
+        return new MediumDTO(this.id, this.category, this.title, this.description);
     }
 
 }

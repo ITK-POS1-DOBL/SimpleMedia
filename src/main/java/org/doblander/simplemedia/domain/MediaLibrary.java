@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
+import org.doblander.simplemedia.admin.SimpleMediaAppAdminLocal;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
 
 /**
@@ -27,6 +28,9 @@ public class MediaLibrary {
     //private static final IMediaRepository mediaRepo = new MediaListRepository();
     @EJB
     private IMediaRepository mediaRepo;
+    
+    @EJB
+    private SimpleMediaAppAdminLocal appAdmin;
 
     public void insertMedium(String category, String title, String description) {
         Medium tempMedium = new Medium(category, title, description);
@@ -61,9 +65,9 @@ public class MediaLibrary {
         List<MediumDTO> dtoList = new ArrayList<>();
         Medium tempMedium;
 
-        Iterator iterator = completeMediaList.iterator();
+        Iterator<Medium> iterator = completeMediaList.iterator();
         while (iterator.hasNext()) {
-            tempMedium = (Medium) iterator.next();
+            tempMedium = iterator.next();
             dtoList.add(tempMedium.createDTO());
         }
 
@@ -79,7 +83,7 @@ public class MediaLibrary {
     }
 
     @PostConstruct
-    private void initializeMediaLib() {
+    private void prepareMediaLibForTests() {
         /* DB is already initialized so no more initialization code needed
          * at the moment!
          */
@@ -90,6 +94,15 @@ public class MediaLibrary {
             insertMedium("cd", "cd2", "another cd");
             insertMedium("bd", "bd1", "a bd");
             insertMedium("minidisk", "minidisk1", "an ancient medium");
+            insertCategory("CD");
+            insertCategory("DVD");
+            insertCategory("BD");
+            insertCategory("MD");
+            insertCategory("FD");
         }
+    }
+
+    private void insertCategory(String cd) {
+        appAdmin.add(null);
     }
 }

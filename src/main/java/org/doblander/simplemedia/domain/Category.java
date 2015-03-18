@@ -67,5 +67,9 @@ public class Category implements Serializable {
     public String toString() {
         return "org.doblander.simplemedia.domain.Category[ id=" + id + " ]";
     }
+    
+    public CategoryDTO createDTO() {
+        return new CategoryDTO(this.id, this.categoryText);
+    }
 
 }
