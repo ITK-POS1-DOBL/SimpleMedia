@@ -10,8 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.ejb.Singleton;
-import javax.ejb.Startup;
+import javax.ejb.Stateless;
 import org.doblander.simplemedia.admin.SimpleMediaAppAdminLocal;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
 
@@ -21,8 +20,7 @@ import org.doblander.simplemedia.util.SimpleMediaLogger;
  *
  * @author intruder
  */
-@Singleton
-@Startup
+@Stateless
 public class MediaLibrary {
 
     //private static final IMediaRepository mediaRepo = new MediaListRepository();
@@ -82,27 +80,9 @@ public class MediaLibrary {
         mediaRepo.deleteMediumById(mediumId);
     }
 
-    @PostConstruct
-    private void prepareMediaLibForTests() {
-        /* DB is already initialized so no more initialization code needed
-         * at the moment!
-         */
+    
 
-        if (!mediaRepo.isInitializedWithData()) {
-            insertMedium("cd", "cd1", "a cd");
-            insertMedium("dvd", "dvd1", "a dvd");
-            insertMedium("cd", "cd2", "another cd");
-            insertMedium("bd", "bd1", "a bd");
-            insertMedium("minidisk", "minidisk1", "an ancient medium");
-            insertCategory("CD");
-            insertCategory("DVD");
-            insertCategory("BD");
-            insertCategory("MD");
-            insertCategory("FD");
-        }
-    }
-
-    private void insertCategory(String cd) {
-        appAdmin.add(null);
+    public void insertCategory(String cd) {
+        appAdmin.add(cd);
     }
 }

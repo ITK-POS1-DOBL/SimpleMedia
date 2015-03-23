@@ -16,13 +16,12 @@ import org.doblander.simplemedia.domain.CategoryDTO;
  */
 @Local
 public interface SimpleMediaAppAdminLocal {
-
+    
     /**
      *
      * @param catName the value of catName
      */
     void add(String catName);
-    
     
     /**
      * Finds a medium identified by its ID in the library
@@ -48,7 +47,7 @@ public interface SimpleMediaAppAdminLocal {
      * (=ID field) and holds the all medium fields that are then written back to
      * the original object in the library.
      */
-    public void updateMedium(CategoryDTO categoryDto);
+    void updateMedium(CategoryDTO categoryDto);
 
     /**
      * Delete a medium identified by its ID
@@ -56,7 +55,7 @@ public interface SimpleMediaAppAdminLocal {
      * @param categoryId The ID of the medium object that is to be deleted from
      * the library.
      */
-    public void deleteCategoryById(Long categoryId);
+    void deleteCategoryById(Long categoryId);
 
     /**
      * Indicates whether the category store has been initialized with some
@@ -67,9 +66,9 @@ public interface SimpleMediaAppAdminLocal {
      * @return TRUE if number of categories in library exceeds threshold, FALSE
      * otherwise
      */
-    public boolean isInitializedWithData();
+    boolean isInitializedWithData();
 
-    public List<CategoryDTO> convertCategoryListToDTOList(List<Category> completeCategoryList);
+    List<CategoryDTO> convertCategoryListToDTOList(List<Category> completeCategoryList);
 
     
 }
