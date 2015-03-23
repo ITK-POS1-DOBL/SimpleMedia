@@ -25,4 +25,8 @@
         <description>role of normal users</description>
         <role-name>userRole</role-name>
     </security-role>
+    <security-role>
+        <description>role for privileged admin users</description>
+        <role-name>admin</role-name>
+    </security-role>
 </web-app>
