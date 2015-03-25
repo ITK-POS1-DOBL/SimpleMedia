@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.ejb.Singleton;
+import javax.ejb.Stateless;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
 
 /**
@@ -19,7 +19,7 @@ import org.doblander.simplemedia.util.SimpleMediaLogger;
  * 
  * @author intruder
  */
-@Singleton
+@Stateless
 public class MediaLibrary {
 
     private static final IMediaRepository mediaRepo = new MediaDBRepository();

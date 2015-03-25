@@ -7,6 +7,7 @@ package org.doblander.simplemedia.domain;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
@@ -19,6 +20,7 @@ import javax.persistence.Id;
 public class Medium implements Serializable {
 
     @Id
+    @GeneratedValue
     private long Id;
     private String type;
     private String title;
@@ -30,7 +32,7 @@ public class Medium implements Serializable {
     }
 
     public Medium(String type, String title, String description) {
-        this.Id = getNextId();
+        //this.Id = getNextId();
         this.type = type;
         this.title = title;
         this.description = description;

@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class MediaDBRepository implements IMediaRepository {
 
-    @PersistenceContext(unitName="org.doblander.simplemedia_PU")
+    @PersistenceContext(unitName="simplemedia_PU")
     private EntityManager em;
     
     @Override
