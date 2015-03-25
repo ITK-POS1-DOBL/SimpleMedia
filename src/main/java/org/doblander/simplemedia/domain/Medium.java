@@ -5,6 +5,7 @@
  */
 package org.doblander.simplemedia.domain;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,7 +16,7 @@ import javax.persistence.Id;
  * @author intruder
  */
 @Entity
-public class Medium {
+public class Medium implements Serializable {
 
     @Id
     private long Id;
