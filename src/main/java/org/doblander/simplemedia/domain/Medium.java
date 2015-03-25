@@ -5,14 +5,19 @@
  */
 package org.doblander.simplemedia.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  * A Medium is the central domain object and stores information of a 
  * concrete medium.
  * 
  * @author intruder
  */
+@Entity
 public class Medium {
 
+    @Id
     private long Id;
     private String type;
     private String title;

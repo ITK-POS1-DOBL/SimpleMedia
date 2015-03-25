@@ -22,7 +22,7 @@ import org.doblander.simplemedia.util.SimpleMediaLogger;
 @Singleton
 public class MediaLibrary {
 
-    private static final IMediaRepository mediaRepo = new MediaListRepository();
+    private static final IMediaRepository mediaRepo = new MediaDBRepository();
 
     public void insertMedium(String type, String title, String description) {
         Medium tempMedium = new Medium(type, title, description);
@@ -74,7 +74,7 @@ public class MediaLibrary {
         mediaRepo.deleteMediumById(mediumId);
     }
     
-    @PostConstruct
+    //@PostConstruct
     private void initializeMediaLib() {
         insertMedium("cd", "cd1", "a cd");
         insertMedium("dvd", "dvd1", "a dvd");
