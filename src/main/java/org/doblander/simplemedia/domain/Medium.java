@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
 /**
@@ -27,15 +29,17 @@ public class Medium implements Serializable {
     @SequenceGenerator(name = "seqGen", initialValue = 1, allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGen")
     private long id;
-    private String category;
+    
+    @ManyToOne
+    private Category category;
     private String title;
     private String description;
 
     public Medium() {
     }
 
-    public Medium(String category, String title, String description) {
-        this.category = category;
+    public Medium(String categoryText, String title, String description) {
+        this.category.setCategoryText(categoryText);
         this.title = title;
         this.description = description;
     }
@@ -44,11 +48,11 @@ public class Medium implements Serializable {
         return id;
     }
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
@@ -69,7 +73,7 @@ public class Medium implements Serializable {
     }
 
     MediumDTO createDTO() {
-        return new MediumDTO(this.id, this.category, this.title, this.description);
+        return new MediumDTO(this.id, this.category.getCategoryText(), this.title, this.description);
     }
 
 }

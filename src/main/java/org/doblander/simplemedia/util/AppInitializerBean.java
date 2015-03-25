@@ -6,6 +6,7 @@
 package org.doblander.simplemedia.util;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.security.RunAs;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
@@ -19,6 +20,7 @@ import org.doblander.simplemedia.domain.MediaLibrary;
  */
 @Singleton
 @Startup
+@RunAs("admin")
 public class AppInitializerBean {
 
     @EJB

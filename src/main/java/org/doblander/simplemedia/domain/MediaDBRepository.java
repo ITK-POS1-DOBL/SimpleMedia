@@ -43,7 +43,7 @@ public class MediaDBRepository implements IMediaRepository {
     @Override
     public void updateMedium(MediumDTO mediumDto) {
         Medium medium = em.find(Medium.class, Long.valueOf(mediumDto.getMediumIdString()));
-        medium.setCategory(mediumDto.getMediumCategoryString());
+        medium.getCategory().setCategoryText(mediumDto.getMediumCategoryString());
         medium.setTitle(mediumDto.getMediumTitleString());
         medium.setDescription(mediumDto.getMediumDescString());
         em.flush();

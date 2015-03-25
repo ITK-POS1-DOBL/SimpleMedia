@@ -26,6 +26,7 @@ public class Category implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGen")
     private Long id;
     private String categoryText;
+    
 
     public String getCategoryText() {
         return categoryText;
