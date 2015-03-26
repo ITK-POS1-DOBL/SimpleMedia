@@ -6,6 +6,7 @@
 package org.doblander.simplemedia.domain;
 
 import java.util.List;
+import javax.ejb.Local;
 
 /**
  * Interface type for media repositories. 
@@ -13,6 +14,7 @@ import java.util.List;
  *
  * @author intruder
  */
+@Local
 public interface IMediaRepository {
 
     void add(Medium medium);

@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.ejb.Stateless;
+import javax.ejb.EJB;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
 
 /**
@@ -19,10 +21,12 @@ import org.doblander.simplemedia.util.SimpleMediaLogger;
  * 
  * @author intruder
  */
-@Stateless
+@Singleton
+@Startup
 public class MediaLibrary {
 
-    private static final IMediaRepository mediaRepo = new MediaDBRepository();
+    @EJB
+    private IMediaRepository mediaRepo;
 
     public void insertMedium(String type, String title, String description) {
         Medium tempMedium = new Medium(type, title, description);
@@ -74,7 +78,7 @@ public class MediaLibrary {
         mediaRepo.deleteMediumById(mediumId);
     }
     
-    //@PostConstruct
+    @PostConstruct
     private void initializeMediaLib() {
         insertMedium("cd", "cd1", "a cd");
         insertMedium("dvd", "dvd1", "a dvd");
