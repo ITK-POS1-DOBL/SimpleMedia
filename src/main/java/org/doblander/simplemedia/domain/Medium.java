@@ -26,8 +26,9 @@ public class Medium implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @SequenceGenerator(name = "seqGen", initialValue = 1, allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqGen")
+    //@SequenceGenerator(name = "seqGen", initialValue = 1, allocationSize = 1)
+    //@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "medium_seq")
+    @GeneratedValue
     private long id;
     
     @ManyToOne
@@ -39,7 +40,14 @@ public class Medium implements Serializable {
     }
 
     public Medium(String categoryText, String title, String description) {
-        this.category.setCategoryText(categoryText);
+        // broken functionality
+        //this.category.setCategoryText(categoryText);
+        this.title = title;
+        this.description = description;
+    }
+
+    Medium(Category category, String title, String description) {
+        this.category = category;
         this.title = title;
         this.description = description;
     }

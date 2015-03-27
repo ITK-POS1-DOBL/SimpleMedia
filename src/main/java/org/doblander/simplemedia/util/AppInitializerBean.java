@@ -19,7 +19,7 @@ import org.doblander.simplemedia.domain.MediaLibrary;
  * @author intruder
  */
 @Singleton
-@Startup
+//@Startup
 @RunAs("admin")
 public class AppInitializerBean {
 
@@ -38,20 +38,20 @@ public class AppInitializerBean {
          * at the moment!
          */
 
-        if (!mediaRepo.isInitializedWithData()) {
-            mediaLib.insertMedium("cd", "cd1", "a cd");
-            mediaLib.insertMedium("dvd", "dvd1", "a dvd");
-            mediaLib.insertMedium("cd", "cd2", "another cd");
-            mediaLib.insertMedium("bd", "bd1", "a bd");
-            mediaLib.insertMedium("minidisk", "minidisk1", "an ancient medium");
-        }
-        
         if (!adminService.isInitializedWithData()) {
             mediaLib.insertCategory("CD");
             mediaLib.insertCategory("DVD");
             mediaLib.insertCategory("BD");
             mediaLib.insertCategory("MD");
             mediaLib.insertCategory("FD");
+        }
+        
+        if (!mediaRepo.isInitializedWithData()) {
+            mediaLib.insertMedium("cd", "cd1", "a cd");
+            mediaLib.insertMedium("dvd", "dvd1", "a dvd");
+            mediaLib.insertMedium("cd", "cd2", "another cd");
+            mediaLib.insertMedium("bd", "bd1", "a bd");
+            mediaLib.insertMedium("minidisk", "minidisk1", "an ancient medium");
         }
         
     }

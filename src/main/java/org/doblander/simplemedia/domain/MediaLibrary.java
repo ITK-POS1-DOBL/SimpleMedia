@@ -8,7 +8,6 @@ package org.doblander.simplemedia.domain;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.doblander.simplemedia.admin.SimpleMediaAppAdminLocal;
@@ -28,9 +27,15 @@ public class MediaLibrary {
     private IMediaRepository mediaRepo;
     
     @EJB
+    private CategoryRepositoryLocal catRepo;
+    
+    @EJB
     private SimpleMediaAppAdminLocal appAdmin;
 
-    public void insertMedium(String category, String title, String description) {
+    public void insertMedium(String categoryName, String title, String description) {
+        
+        Category category = catRepo.getCategoryByName(categoryName);
+        
         Medium tempMedium = new Medium(category, title, description);
 
         mediaRepo.add(tempMedium);
