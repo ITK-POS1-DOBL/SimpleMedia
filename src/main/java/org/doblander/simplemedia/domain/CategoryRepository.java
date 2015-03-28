@@ -21,7 +21,8 @@ public class CategoryRepository implements CategoryRepositoryLocal {
     
     @Override
     public Category getCategoryByName(String categoryName) {
-        return (Category)em.createQuery("select c from CATEGORY where CATEGORYTEXT = " + categoryName).getSingleResult();
+        String queryString = "SELECT c FROM Category c WHERE c.categoryText LIKE " + "'"+ categoryName + "'";
+        return (Category)em.createQuery(queryString).getSingleResult();
     }
 
     // Add business logic below. (Right-click in editor and choose

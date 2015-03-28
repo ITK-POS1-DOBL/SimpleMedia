@@ -5,6 +5,7 @@
  */
 package org.doblander.simplemedia.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -31,6 +32,7 @@ public class adminBean {
      * Creates a new instance of adminBean
      */
     public adminBean() {
+        this.catList = new ArrayList<>();
     }
     
     public void resetResults() {

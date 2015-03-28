@@ -39,12 +39,14 @@ public class Medium implements Serializable {
     public Medium() {
     }
 
+    /*
     public Medium(String categoryText, String title, String description) {
         // broken functionality
         //this.category.setCategoryText(categoryText);
         this.title = title;
         this.description = description;
     }
+    */
 
     Medium(Category category, String title, String description) {
         this.category = category;
