@@ -12,6 +12,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import org.doblander.simplemedia.admin.SimpleMediaAppAdminLocal;
 import org.doblander.simplemedia.util.SimpleMediaLogger;
+import org.doblander.simplemedia.exception.CategoryNotFoundException;
 
 /**
  * The media library is the central class for handling all use cases related to
@@ -32,17 +33,22 @@ public class MediaLibrary {
     @EJB
     private SimpleMediaAppAdminLocal appAdmin;
 
-    public void insertMedium(String categoryName, String title, String description) {
+    public void insertMedium(String categoryName, String title, String description) throws CategoryNotFoundException {
         
-        Category category = catRepo.getCategoryByName(categoryName);
-        
-        Medium tempMedium = new Medium(category, title, description);
+        try {
+            Category category = catRepo.getCategoryByName(categoryName);
 
-        mediaRepo.add(tempMedium);
+            Medium tempMedium = new Medium(category, title, description);
 
-        // Log-Output for debugging...
-        SimpleMediaLogger.logInfo("added medium: " + category + ", " + title
-                + ", " + description);
+            mediaRepo.add(tempMedium);
+
+            // Log-Output for debugging...
+            SimpleMediaLogger.logInfo("added medium: " + category + ", " + title
+                    + ", " + description);
+        }
+        catch (Exception e) {
+            throw new CategoryNotFoundException("Category " + categoryName + "not found!");
+        }
     }
 
     /**

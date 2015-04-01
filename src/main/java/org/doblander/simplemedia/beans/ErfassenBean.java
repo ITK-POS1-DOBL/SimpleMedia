@@ -5,10 +5,13 @@
  */
 package org.doblander.simplemedia.beans;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import org.doblander.simplemedia.domain.MediaLibrary;
+import org.doblander.simplemedia.exception.CategoryNotFoundException;
 
 /**
  * Backing bean for media entry page
@@ -33,7 +36,11 @@ public class ErfassenBean {
     }
 
     public void saveMedium() {
-        theLib.insertMedium(category, title, description);
+        try {
+            theLib.insertMedium(category, title, description);
+        } catch (CategoryNotFoundException ex) {
+            Logger.getLogger(ErfassenBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
         resetUserInputs();
 
     }

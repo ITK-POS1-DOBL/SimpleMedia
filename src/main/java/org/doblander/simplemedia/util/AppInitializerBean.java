@@ -5,6 +5,8 @@
  */
 package org.doblander.simplemedia.util;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.annotation.security.RunAs;
 import javax.ejb.EJB;
@@ -13,6 +15,7 @@ import javax.ejb.Startup;
 import org.doblander.simplemedia.admin.SimpleMediaAppAdminLocal;
 import org.doblander.simplemedia.domain.IMediaRepository;
 import org.doblander.simplemedia.domain.MediaLibrary;
+import org.doblander.simplemedia.exception.CategoryNotFoundException;
 
 /**
  *
@@ -47,11 +50,15 @@ public class AppInitializerBean {
         }
         
         if (!mediaRepo.isInitializedWithData()) {
-            mediaLib.insertMedium("cd", "cd1", "a cd");
-            mediaLib.insertMedium("dvd", "dvd1", "a dvd");
-            mediaLib.insertMedium("cd", "cd2", "another cd");
-            mediaLib.insertMedium("bd", "bd1", "a bd");
-            mediaLib.insertMedium("minidisk", "minidisk1", "an ancient medium");
+            try {
+                mediaLib.insertMedium("cd", "cd1", "a cd");
+                mediaLib.insertMedium("dvd", "dvd1", "a dvd");
+                mediaLib.insertMedium("cd", "cd2", "another cd");
+                mediaLib.insertMedium("bd", "bd1", "a bd");
+                mediaLib.insertMedium("minidisk", "minidisk1", "an ancient medium");
+            } catch (CategoryNotFoundException ex) {
+                Logger.getLogger(AppInitializerBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
     }
