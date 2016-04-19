@@ -39,11 +39,11 @@ public class MediaLibrary {
             Category category = catRepo.getCategoryByName(categoryName);
 
             Medium tempMedium = new Medium(category, title, description);
-
+        	
             mediaRepo.add(tempMedium);
 
             // Log-Output for debugging...
-            SimpleMediaLogger.logInfo("added medium: " + category + ", " + title
+            SimpleMediaLogger.logInfo("added medium: " + new Category() + ", " + title
                     + ", " + description);
         }
         catch (Exception e) {

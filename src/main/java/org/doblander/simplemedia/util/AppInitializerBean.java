@@ -11,7 +11,6 @@ import javax.annotation.PostConstruct;
 import javax.annotation.security.RunAs;
 import javax.ejb.EJB;
 import javax.ejb.Singleton;
-import javax.ejb.Startup;
 import org.doblander.simplemedia.admin.SimpleMediaAppAdminLocal;
 import org.doblander.simplemedia.domain.IMediaRepository;
 import org.doblander.simplemedia.domain.MediaLibrary;
@@ -22,7 +21,6 @@ import org.doblander.simplemedia.exception.CategoryNotFoundException;
  * @author intruder
  */
 @Singleton
-//@Startup
 @RunAs("admin")
 public class AppInitializerBean {
 
@@ -35,12 +33,11 @@ public class AppInitializerBean {
     @EJB
     private SimpleMediaAppAdminLocal adminService;
     
-    @PostConstruct
-    private void prepareMediaLibForTests() {
-        /* DB is already initialized so no more initialization code needed
+    public void prepareMediaLibForTests() {
+
+    	/* DB is already initialized so no more initialization code needed
          * at the moment!
          */
-
         if (!adminService.isInitializedWithData()) {
             mediaLib.insertCategory("CD");
             mediaLib.insertCategory("DVD");
